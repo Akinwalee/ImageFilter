@@ -33,9 +33,9 @@ import { Request, Response } from "express";
   //! END @TODO1
 
   app.get("/filteredimage", async (req:Request, res:Response) => {
-      const image_url = req.query.image_url;
+      const image_url = req.query.image_url.toString();
       if (!image_url){
-        res.status(200).send("Image url is required");
+        res.status(422).send("Image url is required");
       }
 
       const filtered_image = await filterImageFromURL(image_url);
